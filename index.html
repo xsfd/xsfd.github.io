@@ -326,10 +326,10 @@
 <p><img src="/2019/09/29/集成学习/image-20190929184632715.png" alt="image-20190929184632715"></p>
 <p>集成学习有两个主要的问题需要解决，第一是如何得到若干个个体学习器，第二是如何选择一种结合策略，将这些个体学习器集合成一个强学习器。</p>
 <p>集成学习算法主要的类别：Bagging，Boosting以及Stacking</p>
-<h2 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h2><p>在Bagging方法中，利用bootstrap sampling（自助采样法，有放回的采样）方法从整体数据集中采取有放回抽样得到 $N$ 个数据集，在每个数据集上学习出一个模型，最后的预测结果利用$N$个模型的输出得到，具体地：分类问题采用$N$个模型预测投票的方式，回归问题采用$N$个模型预测平均的方式。</p>
+<h2 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h2><p>在Bagging方法中，利用bootstrap sampling（自助采样法，有放回的采样）方法从整体数据集中采取有放回抽样得到 $$N$$ 个数据集，在每个数据集上学习出一个模型，最后的预测结果利用$$N$$个模型的输出得到，具体地：分类问题采用$$N$$个模型预测投票的方式，回归问题采用$$N$$个模型预测平均的方式。</p>
 <h3 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h3><p>随机森林在以决策树为基学习器构建Bagging集成的基础上，进一步在决策树的训练过程中引入了随机属性的选择。使得随机森林中的随机包含两个部分，一个是训练样本的随机选择，另外一个是样本属性的随机选择（可以欧有效的防止过拟合）。</p>
 <p>随机森林在预测的时候，每一棵树的都对输入进行预测，最后进行投票，哪个类别多，输入样本就属于哪个类别。这就相当于前面说的，每一个分类器（每一棵树）都比较弱，但组合到一起（投票）就比较强了。</p>
-<h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><p>Boosting 是一族可将弱学习器提升为强学习器的算法，算法的工作机制：先从初始训练集训练一个基学习器，在根据基学习器的表现对样本分布进行调整，使得先前基学习器做错的训练样本在后续受到更多的关注，然后基于调整后的训练样本的分布来训练下一个基学习器，如此重复，直到基学习器的个数达到指定的个数 $T$，最终将这 $T$个基学习器进行加权结合</p>
+<h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><p>Boosting 是一族可将弱学习器提升为强学习器的算法，算法的工作机制：先从初始训练集训练一个基学习器，在根据基学习器的表现对样本分布进行调整，使得先前基学习器做错的训练样本在后续受到更多的关注，然后基于调整后的训练样本的分布来训练下一个基学习器，如此重复，直到基学习器的个数达到指定的个数 $$T$$，最终将这 $$T$$个基学习器进行加权结合</p>
 <p>Boosting系列算法里最著名算法主要有AdaBoost算法和提升树(boosting tree)系列算法。提升树系列算法里面应用最广泛的是梯度提升树(Gradient Boosting Tree)</p>
 <h3 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h3><h3 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h3><p>GBDT（Gradient Boost Decision Tree)也是一种Boosting的方法，与AdaBoost不同，GBDT每一次的计算是为了减少上一次的残差，GBDT在残差减少（负梯度）的方向上建立一个新的模型。可以参考<a href="https://zhuanlan.zhihu.com/p/26327929" target="_blank" rel="noopener">Gradient Boosting - 知乎专栏</a>。</p>
 <h4 id="GBDT-回归"><a href="#GBDT-回归" class="headerlink" title="GBDT 回归"></a>GBDT 回归</h4><h4 id="GBDT-分类"><a href="#GBDT-分类" class="headerlink" title="GBDT 分类"></a>GBDT 分类</h4><h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p>Stacking 方法是指训练一个模型用于组合其他各个模型。首先我们先训练多个不同的模型，然后把之前训练的各个模型的输出为输入来训练一个模型，以得到一个最终的输出。理论上，Stacking 可以表示上面提到的两种Ensemble 方法，只要我们采用合适的模型组合策略即可。但在实际中，我们通常使用 logistic 回归作为组合策略。</p>
