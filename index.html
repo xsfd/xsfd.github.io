@@ -322,9 +322,21 @@
       
         
           
-            <h1 id="降维算法"><a href="#降维算法" class="headerlink" title="降维算法"></a>降维算法</h1><p>​        一般在观测和收集到的数据样本是高维的，但是在学习和处理当中，只需要其中的某些相关性较大的维度的数据信息。所以，一般会对数据进行降维处理，通过某种数学变换将高维属性的数据转化为低维属性空间的数据。通过降维,我们希望减少冗余信息所造成的误差，提高识别（或其他应用）的精度。或者通过降维算法来寻找数据内部的本质结构特征。有些算法没有对数据进行降维处理很难实现数据的准确的分类等操作。</p>
-<p>​        <strong>常见的降维方法有：PCA（主成分分析）、LDA（）、LLE（）、Laplacian Eigenmaps（）</strong></p>
-<h2 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h2><p>​        Principal Component Analysis(PCA)是最常用的线性降维方法，它的目标是通过某种线性投影，将高维的数据映射到低维的空间中表示，并期望在所投影的维度上数据的方差最大，以此使用较少的数据维度，同时保留住较多的原数据点的特性。</p>
+            <p>​        一般在观测和收集到的数据样本是高维的，但是在学习和处理当中，只需要其中的某些相关性较大的维度的数据信息。所以，一般会对数据进行降维处理，通过某种数学变换将高维属性的数据转化为低维属性空间的数据。通过降维,我们希望减少冗余信息所造成的误差，提高识别（或其他应用）的精度。或者通过降维算法来寻找数据内部的本质结构特征。有些算法没有对数据进行降维处理很难实现数据的准确的分类等操作。</p>
+<p>​        <strong>常见的降维方法有：PCA（主成分分析）、LDA（Linear Discriminant Analysis）、LLE（局部线形嵌入）、Laplacian Eigenmaps（拉普拉斯特征映射）</strong></p>
+<h2 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h2><p>Principal Component Analysis(PCA)是最常用的线性降维方法，它的目标是通过某种线性投影，将高维的数据映射到低维的空间中表示，并期望在所投影的维度上数据的方差最大，以此使用较少的数据维度，同时保留住较多的原数据点的特性。（PCA是丢失原始数据信息最少的一种线性降维方式）</p>
+<p>PCA把原先的n个特征用数目更少的m个特征取代，新特征是旧特征的线性组合，这些线性组合最大化样本方差，尽量使新的m个特征互不相关。从旧特征到新特征的映射捕获数据中的固有变异性。</p>
+<p>PCA追求的是在降维之后能够最大化保持数据的内在信息，并通过衡量在投影方向上的数据方差的大小来衡量该方向的重要性</p>
+<p>注：特征中心化。即每一维的数据都减去该维的均值。这里的“维”指的就是一个特征（或属性），变换之后每一维的均值都变成了0。（减均值操作）</p>
+<h2 id="LDA"><a href="#LDA" class="headerlink" title="LDA"></a>LDA</h2><p><strong>Linear Discriminant Analysis</strong> (也有叫做Fisher Linear Discriminant)是一种有监督的（supervised）线性降维算法。与PCA保持数据信息不同，LDA是为了使得降维后的数据点尽可能地容易被区分！</p>
+<p>类间距大，类内距小</p>
+<p>（注：LDA和PCA是线形降维算法，也是一种谱方法）</p>
+<h2 id="LLE"><a href="#LLE" class="headerlink" title="LLE"></a>LLE</h2><p>Locally linear embedding（LLE）[1] 是一种非线性降维算法，它能够使降维后的数据较好地保持原有<strong>流形结构</strong></p>
+<p>算法主要包含以下三个步骤：</p>
+<p>（1）寻找每个样本点的k个近邻点；</p>
+<p>（2）由每个样本点的近邻点计算出该样本点的局部重建权值矩阵；</p>
+<p>（3）由该样本点的局部重建权值矩阵和其近邻点计算出该样本点的输出值。</p>
+<h2 id="Laplacian-Eigenmaps"><a href="#Laplacian-Eigenmaps" class="headerlink" title="Laplacian Eigenmaps"></a>Laplacian Eigenmaps</h2><p>它的直观思想是希望相互间有关系的点（在图中相连的点）在降维后的空间中尽可能的靠近。</p>
 
           
         
