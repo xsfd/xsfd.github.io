@@ -229,6 +229,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/朴素贝叶斯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YeFeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/img.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xsfd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/30/朴素贝叶斯/" itemprop="url">朴素贝叶斯</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T10:30:12+08:00">
+                2019-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>朴素贝叶斯是基于贝叶斯定理与特征条件独立假设的分类算法。对于给定的训练数据集，首先基于特征条件独立假设学习输入/输出的联合概率分布；然后基于此模型，对于给定的输入<script type="math/tex">x</script>，利用贝叶斯定理求出后验概率最大的输出<script type="math/tex">y</script>（基于贝叶斯定理使用先验概率求后验概率，将最大的后验概率对应的类别作为样本的类别）。</p>
+<p>朴素贝叶斯实际上学习到生成数据的机制，所以属于生成模型，条件独立假设等于是说用于分类的特征在类确定的条件下都是条件独立的。</p>
+<p>朴素贝叶斯分类时，对于给定的输入<script type="math/tex">x</script>，通过学习到的模型计算后验概率分布<script type="math/tex">P(Y=c_{k}|X=x)</script>，将后验概率最大的类作为<script type="math/tex">x</script>的类别输出，后验概率计算根据贝叶斯定理：<script type="math/tex">P(Y=c_{k}|X=x)=\frac{P(X=x|Y=c_{k})P(Y=c_{k})}{\sum_{k} P(X=x|Y=c_{k})P(Y=c_{k})}</script>（注：一般在计算的时候，不考虑分母，因为分母都一样，可以忽略不计算）</p>
+<p>后验概率最化的含义：将输入的样本<script type="math/tex">x</script>分到后验概率最大的类中，等价于期望风险最小。</p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>条件概率的极大似然估计：<script type="math/tex">P(X^{(j)}=a_{jl}|Y=c_{k})=\frac{\sum_{i=1}^{N}I(x^{(i)}_{j}=a_{jl},y_{i}=c_{k})}{\sum_{i=1}^{N}I(y_{i}=c_{k})}</script></p>
+<p>先验概率的极大似然估计：<script type="math/tex">P(Y=c_{k})=\frac{\sum_{i=1}^{N}I(y_{i}=c_{k})}{N}</script></p>
+<h2 id="朴素贝叶斯算法步骤"><a href="#朴素贝叶斯算法步骤" class="headerlink" title="朴素贝叶斯算法步骤"></a>朴素贝叶斯算法步骤</h2><p>输入：训练数据<script type="math/tex">T=\left \{(x_{1},y_{1}),(x_{2},y_{2}),...,(x_{N},y_{N}) \right \}</script>，其中<script type="math/tex">x_{i}=(x_{i}^{1},x_{i}^{2},...,x_{i}^{n})^{T}</script></p>
+<p>输出：<script type="math/tex">x</script>所属的类别</p>
+<p>（1）计算先验概率与条件概率</p>
+<script type="math/tex; mode=display">P(Y=c_{k})=\frac{\sum_{i=1}^{N}I(y_{i}=c_{k})}{N}</script><script type="math/tex; mode=display">P(X^{(j)}=a_{jl}|Y=c_{k})=\frac{\sum_{i=1}^{N}I(x^{(i)}_{j}=a_{jl},y_{i}=c_{k})}{\sum_{i=1}^{N}I(y_{i}=c_{k})}</script><p>（2）对于给定的实例<script type="math/tex">x</script>，计算</p>
+<script type="math/tex; mode=display">P(Y=c_{k})=\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_{k})</script><p>（3）确定实例<script type="math/tex">x</script>的类别</p>
+<script type="math/tex; mode=display">y=arg \ max_{c_{k}}P(Y=c_{k})\prod_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_{k})</script><p>例题1（来源统计学习方法）</p>
+<p><img src="/2019/09/30/朴素贝叶斯/image-20190930104425614.png" alt="image-20190930104425614"></p>
+<p><img src="/2019/09/30/朴素贝叶斯/image-20190930104541890.png" alt="image-20190930104541890"></p>
+<h2 id="贝叶斯估计"><a href="#贝叶斯估计" class="headerlink" title="贝叶斯估计"></a>贝叶斯估计</h2><p>当测试的时候出现训练样本中没有出现的样本的时候，使用极大似然估计会出现概率值为0的情况，为了避免计算出的概率值为0，使用贝叶斯估计（在随机变量的各个取值的频数上赋予一个正数<script type="math/tex">\lambda>0</script>，当<script type="math/tex">\lambda=0</script>的时候，就是极大似然估计，当<script type="math/tex">\lambda=1</script>的时候，称为拉普拉斯平滑）</p>
+<p>条件概率的贝叶斯估计：<script type="math/tex">P_{\lambda}(X^{(j)}=a_{jl}|Y=c_{k})=\frac{\sum_{i=1}^{N}I(x^{(i)}_{j}=a_{jl},y_{i}=c_{k})+\lambda}{\sum_{i=1}^{N}I(y_{i}=c_{k})+S_{j}\lambda}</script>，<script type="math/tex">S_{j}</script>为特征取之的种类数</p>
+<p>先验概率的贝叶斯估计：<script type="math/tex">P_{\lambda}(Y=c_{k})=\frac{\sum_{i=1}^{N}I(y_{i}=c_{k})+\lambda}{N+K\lambda}</script>，<script type="math/tex">K</script>为总的类别数</p>
+<p>例题2（来源统计学习方法）</p>
+<p><img src="/2019/09/30/朴素贝叶斯/image-20190930104724176.png" alt="image-20190930104724176"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/TCP-IP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1413,147 +1573,6 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/目标检测/" itemprop="url" rel="index">
                     <span itemprop="name">目标检测</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/激活函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YeFeng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/img.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xsfd">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/30/激活函数/" itemprop="url">激活函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T01:04:51+08:00">
-                2019-09-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基础知识</span>
                   </a>
                 </span>
 
