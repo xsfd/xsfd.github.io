@@ -336,9 +336,7 @@
 <p>对于给定的训练数据集<script type="math/tex">T</script>和超平面<script type="math/tex">(w,b)</script>，定义超平面<script type="math/tex">(w,b)</script>关于样本点<script type="math/tex">(x_{i},y_{i})</script>的几何间隔为：<script type="math/tex">\gamma_{i}=y_{i}(\frac{w}{\left\|w\right\|}x_{i}+\frac{b}{\left\|w\right\|})</script>，定义超平面<script type="math/tex">(w,b)</script>关于训练数据集<script type="math/tex">T</script>的几何间隔为超平面<script type="math/tex">(w,b)</script>，关于<script type="math/tex">T</script>中所有样本点<script type="math/tex">(x_{i},y_{i})</script>的几何间隔最小值，即：<script type="math/tex">\gamma=\min_{i=1,..,N} \gamma_{i}</script></p>
 <p>在决定超平面的时候，只有支持向量起作用，其他点并不起作用。</p>
 <h3 id="最大间隔法"><a href="#最大间隔法" class="headerlink" title="最大间隔法"></a>最大间隔法</h3><p>构建并求解约束最优化问题：</p>
-<script type="math/tex; mode=display">\min_{w,b}  \frac{1}{2}\left\|w\right\|^{2}$$                                                       (1)
-
-
+<script type="math/tex; mode=display">\min_{w,b}  \frac{1}{2}\left\|w\right\|^{2}$$  (1)
 
 $$s.t.$$    $$y_{i}(wx_{i}+b)-1\geq0,i=1,2,..,N$$2     (2)
 
