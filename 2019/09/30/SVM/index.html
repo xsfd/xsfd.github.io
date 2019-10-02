@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="xsfd">
 <meta property="og:description" content="SVM（支持向量机）是一种常用的二分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大化使其有别于感知机。在使用核函数的时候可以将SVM转化成非线形分类器。SVM的学习算法是求解凸二次规划的最优化算法，等价于正则化的合页损失函数的最小化问题。 支持向量机学习方法包含多种不同的学习模型：  线形可分支持向量机：训练数据线形可分，可以通过硬间隔最大化学习分类器 线形支持向量机：训练">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-02T10:26:29.041Z">
+<meta property="og:updated_time" content="2019-10-02T10:30:16.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="SVM（支持向量机）是一种常用的二分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大化使其有别于感知机。在使用核函数的时候可以将SVM转化成非线形分类器。SVM的学习算法是求解凸二次规划的最优化算法，等价于正则化的合页损失函数的最小化问题。 支持向量机学习方法包含多种不同的学习模型：  线形可分支持向量机：训练数据线形可分，可以通过硬间隔最大化学习分类器 线形支持向量机：训练">
@@ -337,6 +337,8 @@
 <p>在决定超平面的时候，只有支持向量起作用，其他点并不起作用。</p>
 <h3 id="最大间隔法"><a href="#最大间隔法" class="headerlink" title="最大间隔法"></a>最大间隔法</h3><p>构建并求解约束最优化问题：</p>
 <script type="math/tex; mode=display">\min_{w,b}  \frac{1}{2}\left\|w\right\|^{2}$$                                                           (1)
+
+
 
 $$s.t.$$    $$y_{i}(wx_{i}+b)-1\geq0,i=1,2,..,N$$2         (2)
 
