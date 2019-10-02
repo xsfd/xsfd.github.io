@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="xsfd">
 <meta property="og:description" content="SVM（支持向量机）是一种常用的二分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大化使其有别于感知机。在使用核函数的时候可以将SVM转化成非线形分类器。SVM的学习算法是求解凸二次规划的最优化算法，等价于正则化的合页损失函数的最小化问题。 支持向量机学习方法包含多种不同的学习模型：  线形可分支持向量机：训练数据线形可分，可以通过硬间隔最大化学习分类器 线形支持向量机：训练">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-02T10:35:59.404Z">
+<meta property="og:updated_time" content="2019-10-02T14:01:05.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="SVM（支持向量机）是一种常用的二分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大化使其有别于感知机。在使用核函数的时候可以将SVM转化成非线形分类器。SVM的学习算法是求解凸二次规划的最优化算法，等价于正则化的合页损失函数的最小化问题。 支持向量机学习方法包含多种不同的学习模型：  线形可分支持向量机：训练数据线形可分，可以通过硬间隔最大化学习分类器 线形支持向量机：训练">
@@ -347,9 +347,20 @@
 <p><script type="math/tex">\min_{w,b,\xi}  \frac{1}{2}\left\|w\right\|^{2}+C\sum_{i=1}^{N}\xi_{i}</script>                                                           (1)</p>
 <p><script type="math/tex">s.t.</script>    <script type="math/tex">y_{i}(wx_{i}+b)\geq1-\xi_{i},i=1,2,..,N</script>                                   (2)</p>
 <p>同上，通过拉格朗日对偶问题的求解可以求出对应的参数的解（注意不同的损失函数的区别以及性能的比较）</p>
-<h2 id="非线形支持向量机（核函数）"><a href="#非线形支持向量机（核函数）" class="headerlink" title="非线形支持向量机（核函数）"></a>非线形支持向量机（核函数）</h2><h2 id="SVM-算法常见问题总结"><a href="#SVM-算法常见问题总结" class="headerlink" title="SVM 算法常见问题总结"></a>SVM 算法常见问题总结</h2><p><strong><em>以上仅是个人学习笔记，如有错误，望指出</em></strong></p>
+<h2 id="非线形支持向量机（核函数）"><a href="#非线形支持向量机（核函数）" class="headerlink" title="非线形支持向量机（核函数）"></a>非线形支持向量机（核函数）</h2><p>对解线形分类问题，线形分类支持向量机是一种非常有效的方法，但是有时候数据是线形不可分的，这时候可以使用非线形支持向量机，主要通过核函数进行转化。</p>
+<p>核方法：通过一个非线性变换将原空间的数据转换到一个新的空间，；然后在一个新的空间使用一个线形分类学习方法从训练数据中学习分类模型。</p>
+<h2 id="SVM-算法常见问题总结"><a href="#SVM-算法常见问题总结" class="headerlink" title="SVM 算法常见问题总结"></a>SVM 算法常见问题总结</h2><ol>
+<li><p>SVM对缺失数据的敏感性</p>
+<p>缺失数据是指的数据的特征不完整，向量数据不完整。SVM没有处理缺失值的策略（决策树有）。而SVM希望样本在特征空间中线性可分，所以特征空间的好坏对SVM的性能很重要。缺失特征数据将影响训练结果的好坏。</p>
+</li>
+<li><p>SVM与LR的区别与联系<br>联系：（1）分类（二分类） （2）可加入正则化项<br>区别：（1）LR–参数模型；SVM–非参数模型？（2）目标函数：LR—logistical loss；SVM–hinge loss （3）SVM–support vectors；LR–减少较远点的权重 （4）LR–模型简单，好理解，精度低，可能局部最优；SVM–理解、优化复杂，精度高，全局最优，转化为对偶问题—&gt;简化模型和计算 （5）LR可以做的SVM可以做（线性可分），SVM能做的LR不一定能做（线性不可分）</p>
+</li>
+</ol>
+<p><strong><em>以上仅是个人学习笔记，如有错误，望指出</em></strong></p>
 <h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>1、李航，统计学习方法</p>
 <p>2、周志华，机器学习</p>
+<p>3、<a href="https://blog.csdn.net/szlcw1/article/details/52259668" target="_blank" rel="noopener">https://blog.csdn.net/szlcw1/article/details/52259668</a></p>
+<p>4、<a href="https://blog.csdn.net/u010496169/article/details/73695164" target="_blank" rel="noopener">https://blog.csdn.net/u010496169/article/details/73695164</a></p>
 
       
     </div>
