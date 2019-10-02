@@ -88,7 +88,7 @@
 <meta property="og:description" content="决策树是一种常见的机器学习算法，既可以用于分类任务，也可以实现回归任务；决策树是基于树结构进行决策的。符合人类解决实际问题的思考逻辑。对于一个问题，会进行一系列的判断，最后得出最终的决策（分类结果或回归量）。  决策树的优点：模型具有可读性，分类速度快；学习时，利用训练数据根据损失函数最小化的原则简历决策树 决策树模型的生成通常包含三个过程：1、特征选择；2、决策树的生成；3、决策树剪枝 决策树学">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/10/01/决策树/image-20190923152804131.png">
-<meta property="og:updated_time" content="2019-10-01T16:43:26.016Z">
+<meta property="og:updated_time" content="2019-10-02T02:18:58.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
 <meta name="twitter:description" content="决策树是一种常见的机器学习算法，既可以用于分类任务，也可以实现回归任务；决策树是基于树结构进行决策的。符合人类解决实际问题的思考逻辑。对于一个问题，会进行一系列的判断，最后得出最终的决策（分类结果或回归量）。  决策树的优点：模型具有可读性，分类速度快；学习时，利用训练数据根据损失函数最小化的原则简历决策树 决策树模型的生成通常包含三个过程：1、特征选择；2、决策树的生成；3、决策树剪枝 决策树学">
@@ -343,7 +343,8 @@
 <p>从根节点开始，对节点计算所有可能的特征的信息增益，选择信息增益最大的特征作为节点的特征，有该特征的不同取值构建子节点，再对子节点递归的调用以上的方法，构建决策树；直到所有的特征的信息增益均很小或没有特征可以选择为止。最后得到一个决策树。ID3 相当于使用极大似然估计法进行概率模型的选择。</p>
 <h3 id="C4-5（信息增益率）"><a href="#C4-5（信息增益率）" class="headerlink" title="C4.5（信息增益率）"></a>C4.5（信息增益率）</h3><p>C4.5 算法与 ID3 算法显示，只是在进行特征选择的时候使用的是信息增益比</p>
 <h2 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h2><p>递归生成的决策树，对与训练数据一般具有很好的划分能力，但是对测试数据可能并没有很好的泛化能力，即发生了过拟合的现象，需要对决策树进行剪枝操作，降低决策树的复杂度，从而提高决策树的泛化能力。决策树的剪枝一般可以分为“预剪枝”和“后剪枝”。<strong>预剪枝是指在决策树的生成的过程中，对每个节点在划分前先进行估计，若当前节点的划分不能带来决策树泛化性能的提升，则停止划分，并将当前节点标记为叶节点。</strong> <strong>后剪枝则是使用训练集先生成一个完整的决策树，然后自底向上的对非叶节点进行考察，如果将该节点对应的子树替换为叶节点能带来决策树泛化性能的提升，则将该子树替换为叶节点。</strong>（所有的泛化性能提升的判断是根据验证集的结果进行判断的）</p>
-<h2 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h2><h2 id><a href="#" class="headerlink" title=" "></a> </h2><p><strong><em>以上仅是个人学习笔记，如有错误，望指出</em></strong></p>
+<h2 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h2><p>CART 既可以用于分类，也可以用于回归的任务。CART 是在给定输入随机变量<script type="math/tex">X</script>条件下输出随机变量<script type="math/tex">Y</script>条件概率分布的学习方法，CART假设决策树是二叉树。CART决策树的生成是递归地构建二叉决策树的过程，<strong>对于回归树，使用平方误差最小化准则；对于分类树，使用基尼指数最小化准则，进行特征选择，生成二叉树</strong></p>
+<p><strong><em>以上仅是个人学习笔记，如有错误，望指出</em></strong></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1、李航，统计学习方法</p>
 <p>2、周志华，机器学习</p>
 
@@ -534,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">1.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益比"><span class="nav-number">1.2.</span> <span class="nav-text">信息增益比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的生成"><span class="nav-number">2.</span> <span class="nav-text">决策树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ID3（信息增益）"><span class="nav-number">2.1.</span> <span class="nav-text">ID3（信息增益）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C4-5（信息增益率）"><span class="nav-number">2.2.</span> <span class="nav-text">C4.5（信息增益率）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的剪枝"><span class="nav-number">3.</span> <span class="nav-text">决策树的剪枝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART"><span class="nav-number">4.</span> <span class="nav-text">CART</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">5.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">1.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益比"><span class="nav-number">1.2.</span> <span class="nav-text">信息增益比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的生成"><span class="nav-number">2.</span> <span class="nav-text">决策树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ID3（信息增益）"><span class="nav-number">2.1.</span> <span class="nav-text">ID3（信息增益）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C4-5（信息增益率）"><span class="nav-number">2.2.</span> <span class="nav-text">C4.5（信息增益率）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的剪枝"><span class="nav-number">3.</span> <span class="nav-text">决策树的剪枝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART"><span class="nav-number">4.</span> <span class="nav-text">CART</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
