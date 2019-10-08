@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="监督学习,">
+  <meta name="keywords" content="无监督学习,">
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="监督学习">
+<meta name="description" content="聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法 聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义">
+<meta name="keywords" content="无监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="感知机">
-<meta property="og:url" content="http://yoursite.com/2019/09/30/感知机/index.html">
+<meta property="og:title" content="聚类">
+<meta property="og:url" content="http://yoursite.com/2019/10/07/聚类/index.html">
 <meta property="og:site_name" content="xsfd">
+<meta property="og:description" content="聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法 聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T16:42:23.039Z">
+<meta property="og:updated_time" content="2019-10-07T13:33:20.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="感知机">
+<meta name="twitter:title" content="聚类">
+<meta name="twitter:description" content="聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法 聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/30/感知机/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/07/聚类/">
 
 
 
 
 
-  <title>感知机 | xsfd</title>
+  <title>聚类 | xsfd</title>
   
 
 
@@ -230,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/感知机/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/聚类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YeFeng">
@@ -247,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">感知机</h1>
+          <h1 class="post-title" itemprop="name headline">聚类</h1>
         
 
         <div class="post-meta">
@@ -259,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T00:40:11+08:00">
-                2019-09-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-07T19:39:15+08:00">
+                2019-10-07
               </time>
             
 
@@ -319,7 +322,12 @@
       
 
       
-        
+        <p>聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法</p>
+<p>聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义方法直接影响聚类的结果，所以相似度的度量方法的选择是聚类的根本问题</p>
+<p>主要的聚类方法有以下三种：<strong>原型聚类、密度聚类、层次聚类</strong></p>
+<h2 id="相似度计算方法"><a href="#相似度计算方法" class="headerlink" title="相似度计算方法"></a>相似度计算方法</h2><h3 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h3><p>给定样本集合<script type="math/tex">X</script>（<script type="math/tex">X</script>是<script type="math/tex">m</script>维实数向量空间<script type="math/tex">R^{m}</script>中点的集合），其中<script type="math/tex">x_{i},x_{j}\epsilon X</script>，<script type="math/tex">x_{i}=(x_{1i},x_{2i},...,x_{mi})^T</script>，<script type="math/tex">x_{j}=(x_{1j},x_{2j},...,x_{mj})^T</script>，样本<script type="math/tex">x_{i}</script>与样本<script type="math/tex">x_{j}</script>的闵可夫斯基距离定义为：</p>
+<p>闵可夫斯基越大相似度越小，距离越小相似度越大</p>
+<h3 id="马哈拉诺比斯距离"><a href="#马哈拉诺比斯距离" class="headerlink" title="马哈拉诺比斯距离"></a>马哈拉诺比斯距离</h3><h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><h3 id="夹角余弦"><a href="#夹角余弦" class="headerlink" title="夹角余弦"></a>夹角余弦</h3><h2 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h2><h3 id="K-均值算法"><a href="#K-均值算法" class="headerlink" title="K 均值算法"></a>K 均值算法</h3><h3 id="学习向量化"><a href="#学习向量化" class="headerlink" title="学习向量化"></a>学习向量化</h3><h3 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h3><h2 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h2><h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2>
       
     </div>
     
@@ -336,7 +344,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/监督学习/" rel="tag"># 监督学习</a>
+            <a href="/tags/无监督学习/" rel="tag"># 无监督学习</a>
           
         </div>
       
@@ -349,8 +357,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/30/线形回归/" rel="next" title="线形回归">
-                <i class="fa fa-chevron-left"></i> 线形回归
+              <a href="/2019/10/02/SVM/" rel="next" title="SVM">
+                <i class="fa fa-chevron-left"></i> SVM
               </a>
             
           </div>
@@ -359,8 +367,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/30/正则化/" rel="prev" title="正则化">
-                正则化 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/08/梯度消失与梯度爆炸/" rel="prev" title="梯度消失与梯度爆炸">
+                梯度消失与梯度爆炸 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -413,8 +421,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +509,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相似度计算方法"><span class="nav-number">1.</span> <span class="nav-text">相似度计算方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闵可夫斯基距离"><span class="nav-number">1.1.</span> <span class="nav-text">闵可夫斯基距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马哈拉诺比斯距离"><span class="nav-number">1.2.</span> <span class="nav-text">马哈拉诺比斯距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关系数"><span class="nav-number">1.3.</span> <span class="nav-text">相关系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#夹角余弦"><span class="nav-number">1.4.</span> <span class="nav-text">夹角余弦</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型聚类"><span class="nav-number">2.</span> <span class="nav-text">原型聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-均值算法"><span class="nav-number">2.1.</span> <span class="nav-text">K 均值算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习向量化"><span class="nav-number">2.2.</span> <span class="nav-text">学习向量化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯混合聚类"><span class="nav-number">2.3.</span> <span class="nav-text">高斯混合聚类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密度聚类"><span class="nav-number">3.</span> <span class="nav-text">密度聚类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次聚类"><span class="nav-number">4.</span> <span class="nav-text">层次聚类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

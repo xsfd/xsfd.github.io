@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="监督学习,">
+  <meta name="keywords" content="深度学习,">
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="监督学习">
+<meta name="description" content="其实梯度爆炸和梯度消失问题都是因为网络太深，网络权值更新不稳定造成的，本质上是因为梯度反向传播中的连乘效应 梯度消失主要原因：在反向传播的过程中，每层的梯度大于0小于1（sigmoid函数的最大梯度为0.25），经过很深的网络进行反向传播的时候，就会造成梯度接近0的情况，造成梯度消失 梯度爆炸主要原因：网络太深、初始化权重太大、损失函数设计不合理、权重更新不稳定等原因造成的 解决办法 降低网络的深">
+<meta name="keywords" content="深度学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="感知机">
-<meta property="og:url" content="http://yoursite.com/2019/09/30/感知机/index.html">
+<meta property="og:title" content="梯度消失与梯度爆炸">
+<meta property="og:url" content="http://yoursite.com/2019/10/08/梯度消失与梯度爆炸/index.html">
 <meta property="og:site_name" content="xsfd">
+<meta property="og:description" content="其实梯度爆炸和梯度消失问题都是因为网络太深，网络权值更新不稳定造成的，本质上是因为梯度反向传播中的连乘效应 梯度消失主要原因：在反向传播的过程中，每层的梯度大于0小于1（sigmoid函数的最大梯度为0.25），经过很深的网络进行反向传播的时候，就会造成梯度接近0的情况，造成梯度消失 梯度爆炸主要原因：网络太深、初始化权重太大、损失函数设计不合理、权重更新不稳定等原因造成的 解决办法 降低网络的深">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T16:42:23.039Z">
+<meta property="og:updated_time" content="2019-10-08T12:15:01.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="感知机">
+<meta name="twitter:title" content="梯度消失与梯度爆炸">
+<meta name="twitter:description" content="其实梯度爆炸和梯度消失问题都是因为网络太深，网络权值更新不稳定造成的，本质上是因为梯度反向传播中的连乘效应 梯度消失主要原因：在反向传播的过程中，每层的梯度大于0小于1（sigmoid函数的最大梯度为0.25），经过很深的网络进行反向传播的时候，就会造成梯度接近0的情况，造成梯度消失 梯度爆炸主要原因：网络太深、初始化权重太大、损失函数设计不合理、权重更新不稳定等原因造成的 解决办法 降低网络的深">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/30/感知机/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/08/梯度消失与梯度爆炸/">
 
 
 
 
 
-  <title>感知机 | xsfd</title>
+  <title>梯度消失与梯度爆炸 | xsfd</title>
   
 
 
@@ -230,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/感知机/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/梯度消失与梯度爆炸/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YeFeng">
@@ -247,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">感知机</h1>
+          <h1 class="post-title" itemprop="name headline">梯度消失与梯度爆炸</h1>
         
 
         <div class="post-meta">
@@ -259,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T00:40:11+08:00">
-                2019-09-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T20:00:02+08:00">
+                2019-10-08
               </time>
             
 
@@ -282,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基础知识</span>
                   </a>
                 </span>
 
@@ -319,7 +322,17 @@
       
 
       
-        
+        <p>其实梯度爆炸和梯度消失问题都是因为网络太深，网络权值更新不稳定造成的，本质上是因为梯度反向传播中的连乘效应</p>
+<h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><p>主要原因：在反向传播的过程中，每层的梯度大于0小于1（sigmoid函数的最大梯度为0.25），经过很深的网络进行反向传播的时候，就会造成梯度接近0的情况，造成梯度消失</p>
+<h2 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h2><p>主要原因：网络太深、初始化权重太大、损失函数设计不合理、权重更新不稳定等原因造成的</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>降低网络的深度，如果需要深度网络，可以使用resnet中的短链接结构以防止梯度消失（resnet中的短链接可以改善梯度消失问题，但是resnet主要不是解决梯度消失问题的<a href="https://www.jianshu.com/p/09643588f373）" target="_blank" rel="noopener">https://www.jianshu.com/p/09643588f373）</a></li>
+<li>激活函数使用ReLU，代替sigmoid函数</li>
+<li>使用BN（Batchnorm本质上是解决反向传播过程中的梯度问题）</li>
+<li>使用权重正则化、梯度剪切（一般针对梯度爆炸使用）</li>
+<li>加载预训练模型，在预训练模型上进行微调</li>
+</ol>
+
       
     </div>
     
@@ -336,7 +349,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/监督学习/" rel="tag"># 监督学习</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
         </div>
       
@@ -349,8 +362,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/30/线形回归/" rel="next" title="线形回归">
-                <i class="fa fa-chevron-left"></i> 线形回归
+              <a href="/2019/10/07/聚类/" rel="next" title="聚类">
+                <i class="fa fa-chevron-left"></i> 聚类
               </a>
             
           </div>
@@ -359,8 +372,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/30/正则化/" rel="prev" title="正则化">
-                正则化 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/08/过拟合与欠拟合/" rel="prev" title="过拟合与欠拟合">
+                过拟合与欠拟合 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -413,8 +426,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +514,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度消失"><span class="nav-number">1.</span> <span class="nav-text">梯度消失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度爆炸"><span class="nav-number">2.</span> <span class="nav-text">梯度爆炸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

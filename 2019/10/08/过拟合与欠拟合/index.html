@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="监督学习,">
+  <meta name="keywords" content="深度学习,">
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="监督学习">
+<meta name="description" content="过拟合表现：在训练集上的性能很好，但是在验证集上的性能很差，网络学习到了数据的特例信息，降低了网络的泛化能力，此时模型的方差较大 造成原因：模型太复杂，数据简单却选择了大模型，数据量有限 解决办法：  增加数据量 降低网络的复杂度 dropout early stoping（早停） 参数正则化，降低过拟合，提高泛化能力（正则化的目的是用来防止过拟合的，所以增大正则化系数可以解决过拟合，减小则可以解">
+<meta name="keywords" content="深度学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="感知机">
-<meta property="og:url" content="http://yoursite.com/2019/09/30/感知机/index.html">
+<meta property="og:title" content="过拟合与欠拟合">
+<meta property="og:url" content="http://yoursite.com/2019/10/08/过拟合与欠拟合/index.html">
 <meta property="og:site_name" content="xsfd">
+<meta property="og:description" content="过拟合表现：在训练集上的性能很好，但是在验证集上的性能很差，网络学习到了数据的特例信息，降低了网络的泛化能力，此时模型的方差较大 造成原因：模型太复杂，数据简单却选择了大模型，数据量有限 解决办法：  增加数据量 降低网络的复杂度 dropout early stoping（早停） 参数正则化，降低过拟合，提高泛化能力（正则化的目的是用来防止过拟合的，所以增大正则化系数可以解决过拟合，减小则可以解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T16:42:23.039Z">
+<meta property="og:updated_time" content="2019-10-08T12:14:41.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="感知机">
+<meta name="twitter:title" content="过拟合与欠拟合">
+<meta name="twitter:description" content="过拟合表现：在训练集上的性能很好，但是在验证集上的性能很差，网络学习到了数据的特例信息，降低了网络的泛化能力，此时模型的方差较大 造成原因：模型太复杂，数据简单却选择了大模型，数据量有限 解决办法：  增加数据量 降低网络的复杂度 dropout early stoping（早停） 参数正则化，降低过拟合，提高泛化能力（正则化的目的是用来防止过拟合的，所以增大正则化系数可以解决过拟合，减小则可以解">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/30/感知机/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/08/过拟合与欠拟合/">
 
 
 
 
 
-  <title>感知机 | xsfd</title>
+  <title>过拟合与欠拟合 | xsfd</title>
   
 
 
@@ -230,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/感知机/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/过拟合与欠拟合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YeFeng">
@@ -247,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">感知机</h1>
+          <h1 class="post-title" itemprop="name headline">过拟合与欠拟合</h1>
         
 
         <div class="post-meta">
@@ -259,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T00:40:11+08:00">
-                2019-09-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T20:14:50+08:00">
+                2019-10-08
               </time>
             
 
@@ -282,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基础知识</span>
                   </a>
                 </span>
 
@@ -319,7 +322,28 @@
       
 
       
-        
+        <h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><p><strong>表现</strong>：在训练集上的性能很好，但是在验证集上的性能很差，网络学习到了数据的特例信息，降低了网络的泛化能力，此时模型的方差较大</p>
+<p><strong>造成原因：</strong>模型太复杂，数据简单却选择了大模型，数据量有限</p>
+<p><strong>解决办法：</strong></p>
+<ol>
+<li>增加数据量</li>
+<li>降低网络的复杂度</li>
+<li>dropout</li>
+<li>early stoping（早停）</li>
+<li>参数正则化，降低过拟合，提高泛化能力（正则化的目的是用来防止过拟合的，所以增大正则化系数可以解决过拟合，减小则可以解决欠拟合）</li>
+<li>使用BN（Batchnorm本质上是解决反向传播过程中的梯度问题）</li>
+</ol>
+<h2 id="欠拟合"><a href="#欠拟合" class="headerlink" title="欠拟合"></a>欠拟合</h2><p><strong>表现：</strong>在训练集以及测试集上同时具有较高的误差，此时模型的偏差较大</p>
+<p><strong>造成原因：</strong>模型太简单，数据太复杂，网络没有学习到数据内容</p>
+<p>解决办法：</p>
+<ol>
+<li>增加数据特征项</li>
+<li>适当增加网络的复杂度</li>
+<li>增加模型学习率</li>
+<li>加载预训练模型，微调网络结构</li>
+<li>使用集成学习方法、或者使用多模型融合</li>
+</ol>
+
       
     </div>
     
@@ -336,7 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/监督学习/" rel="tag"># 监督学习</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
         </div>
       
@@ -349,8 +373,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/30/线形回归/" rel="next" title="线形回归">
-                <i class="fa fa-chevron-left"></i> 线形回归
+              <a href="/2019/10/08/梯度消失与梯度爆炸/" rel="next" title="梯度消失与梯度爆炸">
+                <i class="fa fa-chevron-left"></i> 梯度消失与梯度爆炸
               </a>
             
           </div>
@@ -358,10 +382,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/30/正则化/" rel="prev" title="正则化">
-                正则化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,8 +433,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +521,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合"><span class="nav-number">1.</span> <span class="nav-text">过拟合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欠拟合"><span class="nav-number">2.</span> <span class="nav-text">欠拟合</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
