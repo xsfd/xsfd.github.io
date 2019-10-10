@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="xsfd">
 <meta property="og:description" content="聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法 聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-07T13:33:20.365Z">
+<meta property="og:updated_time" content="2019-10-10T10:54:49.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类">
 <meta name="twitter:description" content="聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法 聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义">
@@ -325,9 +325,39 @@
         <p>聚类是将样本集合中相似的样本分配到相同的类，不相似的样本分配到不同的类。聚类的时候，样本通常是欧式空间中的向量，类别不是事先给定的，而是从数据中自动发现的，但是类别的数量是给定的。如果样本只能属于某一个类别，则称为硬聚类，如果一个样本可以属于多个类别，则称为软聚类。层次聚类、K均值聚类是硬聚类方法；高斯混合模型EM算法是软聚类算法</p>
 <p>聚类的核心概念是相似度或距离，相似度或距离的定义有多种。不同的定义方法直接影响聚类的结果，所以相似度的度量方法的选择是聚类的根本问题</p>
 <p>主要的聚类方法有以下三种：<strong>原型聚类、密度聚类、层次聚类</strong></p>
-<h2 id="相似度计算方法"><a href="#相似度计算方法" class="headerlink" title="相似度计算方法"></a>相似度计算方法</h2><h3 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h3><p>给定样本集合<script type="math/tex">X</script>（<script type="math/tex">X</script>是<script type="math/tex">m</script>维实数向量空间<script type="math/tex">R^{m}</script>中点的集合），其中<script type="math/tex">x_{i},x_{j}\epsilon X</script>，<script type="math/tex">x_{i}=(x_{1i},x_{2i},...,x_{mi})^T</script>，<script type="math/tex">x_{j}=(x_{1j},x_{2j},...,x_{mj})^T</script>，样本<script type="math/tex">x_{i}</script>与样本<script type="math/tex">x_{j}</script>的闵可夫斯基距离定义为：</p>
+<h2 id="相似度计算方法"><a href="#相似度计算方法" class="headerlink" title="相似度计算方法"></a>相似度计算方法</h2><h3 id="闵可夫斯基距离"><a href="#闵可夫斯基距离" class="headerlink" title="闵可夫斯基距离"></a>闵可夫斯基距离</h3><p>给定样本集合<script type="math/tex">X</script>（<script type="math/tex">X</script>是<script type="math/tex">m</script>维实数向量空间<script type="math/tex">R^{m}</script>中点的集合），其中<script type="math/tex">x_{i},x_{j}\epsilon X</script>，$x_{i}=(x_{1i},x_{2i},…,x_{mi})^T$，$x_{j}=(x_{1j},x_{2j},…,x_{mj})^T$，样本$x_{i}$与样本$x_{j}$的闵可夫斯基距离定义为：</p>
+<p>$d_{ij}=(\sum_{k=1}^{m}|x_{ki}-x_{kj}|^{p})^{\frac{1}{p}}$，$p \geq1$</p>
+<p>当$p=2$时称为欧式距离；当$p=1$时称为曼哈顿距离；当$p=\infty$时称为切比雪夫距离，即取各个坐标数值差的绝对值的最大值：$d_{ij}=max_{k}|x_{ki}-x_{kj}|$。</p>
 <p>闵可夫斯基越大相似度越小，距离越小相似度越大</p>
-<h3 id="马哈拉诺比斯距离"><a href="#马哈拉诺比斯距离" class="headerlink" title="马哈拉诺比斯距离"></a>马哈拉诺比斯距离</h3><h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><h3 id="夹角余弦"><a href="#夹角余弦" class="headerlink" title="夹角余弦"></a>夹角余弦</h3><h2 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h2><h3 id="K-均值算法"><a href="#K-均值算法" class="headerlink" title="K 均值算法"></a>K 均值算法</h3><h3 id="学习向量化"><a href="#学习向量化" class="headerlink" title="学习向量化"></a>学习向量化</h3><h3 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h3><h2 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h2><h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2>
+<h3 id="马哈拉诺比斯距离"><a href="#马哈拉诺比斯距离" class="headerlink" title="马哈拉诺比斯距离"></a>马哈拉诺比斯距离</h3><p>马哈拉诺比斯距离，简称马氏距离，考虑各个分量（特征）之间的相似度并与各个分量的尺度无关。马氏距离越大相似度越小，距离越小相似度越大。</p>
+<p>定义：给定一个样本集合$X$，</p>
+<p>斜方差矩阵</p>
+<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><h3 id="夹角余弦"><a href="#夹角余弦" class="headerlink" title="夹角余弦"></a>夹角余弦</h3><h2 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h2><p>原型聚类称为“基于原型的聚类”，一般假设聚类结构能够通过一组原型刻画，在现实聚类任务重极为常见。通常情况下，算法先对原型进行初始化，然后对原型进行更新迭代求解，采用不同的原型表示、不同的求解方式，将产生不同的算法。</p>
+<h3 id="K-均值算法"><a href="#K-均值算法" class="headerlink" title="K 均值算法"></a>K 均值算法</h3><p>K均值聚类是基于样本集合划分的聚类算法。K均值聚类将样本集合划分为K个子集，构成K个类，将n个样本划分到K个类中，每个样本到其所属类的中心距离最短。每个样本只属于某一类，所以，K均值聚类算法属于硬聚类算法。</p>
+<p><strong>算法流程：</strong></p>
+<p>输入：$n$个样本的集合$X$；</p>
+<p>输出：样本集合的聚类$C^{*}$</p>
+<ol>
+<li>初始化，令 t=0，随机选择开个样本点作为初始聚类中心 $m^{(0)}=(m^{(0)}_{1},…,m^{(0)}_{l},…,m^{(0)}_{k})$。</li>
+<li>对样本进行聚类。对固定的类中心$m^{(t)}=(m^{(t)}_{1},…,m^{(t)}_{l},…,m^{(t)}_{k})$，其中$m_{l}^{(t)}$，为类$G_{l}$，的中心，计算么个样本到类中心的距离，将每个样本指派到与其最近的中心的类中，构成聚类结果$C^{(t)}$</li>
+<li>计算新的类中心，对聚类结果$C^{(t)}$，计算当前各个类中的样本的均值，作为新的类中心$m^{(t)}=(m^{(t+1)}_{1},…,m^{(t+1)}_{l},…,m^{(t+1)}_{k})$</li>
+<li>如果迭代收敛或者符合停止条件，输出$C^{*}=C^{t}$。否则，令 t=t+1，返回第2步。</li>
+</ol>
+<p>由于K均值使用的是迭代算法求解，所以不能保证得到全局最优解。最后的输出结果是和初始化结果的设置相关，初始化中心的选择直接影响到聚类的结果，在求解过程中会发生偏移，但是一般不会偏移很多。</p>
+<p><strong>对于初始化中心的选择：</strong>可以使用层次聚类对样本进行聚类，得到K个类是停止，然后从每个类别中选择一个与中心距离最近的点（使用层次聚类的结果作为K均次算法的初始值）</p>
+<p><strong>对于K的选择：</strong>K均值算法中的K值需要事先指定，然而在实际的应用中最优的K值是不知道的。所以，可以尝试不同的K值聚类，检验各自得到的聚类的质量，推测最优的K值，<strong>聚类的结果可以使用类的平均直径来衡量</strong>。一般的类别数目变小，平均直径会增加，类别数变大超过某个值以后，平均直径会不变，而这个值则是最优的K值。</p>
+<h3 id="学习向量化"><a href="#学习向量化" class="headerlink" title="学习向量化"></a>学习向量化</h3><p>学习向量化，简称LVQ，也是试图找到一组原型向量来刻画聚类结构，但是与一般的聚类算法不同的是，LVQ假设数据样本带有类别标记，学习过程利用样本的监督信息来进行非要在辅助聚类。</p>
+<h3 id="高斯混合聚类"><a href="#高斯混合聚类" class="headerlink" title="高斯混合聚类"></a>高斯混合聚类</h3><h2 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h2><h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>层次聚类假设类别之间存在层次结构，将样本聚到层次化的类中。层次聚了有聚合或自下而上的聚类、分裂或自上而下聚类两种方法。因为每个样本只属于某一类，所以，层次聚类属于硬聚类算法。</p>
+<p><strong>算法流程：</strong></p>
+<p>输入：n个样本组成的样本集合以及样本之间的距离</p>
+<p>输出：对样本集合的一个层次化聚类</p>
+<ol>
+<li>计算n个样本两两之间的欧式距离$\{d_{ij}\}$，记做矩阵$D=[d_{ij}]_{n\times n}$。</li>
+<li>构造n个类，每个类只包含一个样本。</li>
+<li>合并类间距最小的两个类，其中最短距离为类间距离，构建一个新类。</li>
+<li>计算新类与当前各类之间的距离，若类的个数为1，终止计算，否则会到第3步。</li>
+</ol>
+
       
     </div>
     
@@ -448,7 +478,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
